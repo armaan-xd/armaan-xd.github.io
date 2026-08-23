@@ -1986,3 +1986,34 @@ body.light-mode .dev-window {
   }
 
 }
+
+/* =========================================================
+   TERMINAL BLINKING CURSOR
+========================================================= */
+
+.terminal-cursor {
+
+  display: inline-block;
+
+  margin-left: 2px;
+
+  color: var(--gold);
+
+  animation: terminalBlink 0.9s steps(1) infinite;
+
+}
+
+
+@keyframes terminalBlink {
+
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+
+}
