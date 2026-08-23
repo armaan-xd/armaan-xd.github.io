@@ -4,6 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
   /* =========================================
      1. SMOOTH SCROLLING
      ========================================= */
@@ -36,17 +37,25 @@ document.addEventListener("DOMContentLoaded", () => {
      2. MOBILE NAVIGATION
      ========================================= */
 
-  const navbar = document.querySelector(".navbar");
   const navContainer = document.querySelector(".nav-container");
   const navLinks = document.querySelector(".nav-links");
 
-  if (navbar && navContainer && navLinks) {
+  if (navContainer && navLinks) {
 
     const menuButton = document.createElement("button");
 
     menuButton.className = "mobile-menu-button";
-    menuButton.setAttribute("aria-label", "Open navigation");
-    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.type = "button";
+
+    menuButton.setAttribute(
+      "aria-label",
+      "Open navigation"
+    );
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
 
     menuButton.innerHTML = `
       <span></span>
@@ -59,7 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menuButton.addEventListener("click", () => {
 
-      const isOpen = navLinks.classList.toggle("mobile-open");
+      const isOpen =
+        navLinks.classList.toggle("mobile-open");
 
       menuButton.setAttribute(
         "aria-expanded",
@@ -73,8 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    // Close menu after clicking a navigation link
 
     navLinks.querySelectorAll("a").forEach(link => {
 
@@ -99,78 +107,80 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* /* =========================================
-   3. LIGHT / DARK MODE
-   ========================================= */
+  /* =========================================
+     3. LIGHT / DARK MODE
+     ========================================= */
 
-const themeButton = document.createElement("button");
+  const themeButton = document.createElement("button");
 
-themeButton.className = "theme-toggle";
-themeButton.type = "button";
+  themeButton.className = "theme-toggle";
+  themeButton.type = "button";
 
-themeButton.setAttribute(
-  "aria-label",
-  "Toggle light and dark mode"
-);
-
-const savedTheme = localStorage.getItem("portfolio-theme");
-
-if (savedTheme === "light") {
-  document.body.classList.add("light-mode");
-}
+  themeButton.setAttribute(
+    "aria-label",
+    "Toggle light and dark mode"
+  );
 
 
-/* Update the button icon */
+  const savedTheme =
+    localStorage.getItem("portfolio-theme");
 
-function updateThemeIcon() {
 
-  if (document.body.classList.contains("light-mode")) {
+  if (savedTheme === "light") {
 
-    themeButton.textContent = "☀";
-
-  } else {
-
-    themeButton.textContent = "☾";
+    document.body.classList.add("light-mode");
 
   }
 
-}
 
+  function updateThemeIcon() {
 
-updateThemeIcon();
+    if (
+      document.body.classList.contains("light-mode")
+    ) {
 
+      themeButton.textContent = "☀";
 
-/* Put button inside navigation */
+    } else {
 
-const navContainer = document.querySelector(".nav-container");
+      themeButton.textContent = "☾";
 
-if (navContainer) {
+    }
 
-  navContainer.appendChild(themeButton);
-
-}
-
-
-/* Toggle theme */
-
-themeButton.addEventListener("click", function () {
-
-  document.body.classList.toggle("light-mode");
-
-
-  const lightMode =
-    document.body.classList.contains("light-mode");
-
-
-  localStorage.setItem(
-    "portfolio-theme",
-    lightMode ? "light" : "dark"
-  );
+  }
 
 
   updateThemeIcon();
 
-}); =========================================
+
+  if (navContainer) {
+
+    navContainer.appendChild(themeButton);
+
+  }
+
+
+  themeButton.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-mode");
+
+
+    const lightMode =
+      document.body.classList.contains("light-mode");
+
+
+    localStorage.setItem(
+      "portfolio-theme",
+      lightMode ? "light" : "dark"
+    );
+
+
+    updateThemeIcon();
+
+  });
+
+
+  /* =========================================
      4. SCROLL REVEAL ANIMATIONS
      ========================================= */
 
@@ -180,50 +190,71 @@ themeButton.addEventListener("click", function () {
 
 
   revealElements.forEach(element => {
+
     element.classList.add("reveal");
+
   });
 
 
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
+  if ("IntersectionObserver" in window) {
 
-      entries.forEach(entry => {
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
 
-        if (entry.isIntersecting) {
+          entries.forEach(entry => {
 
-          entry.target.classList.add("visible");
+            if (entry.isIntersecting) {
 
-          observer.unobserve(entry.target);
+              entry.target.classList.add("visible");
 
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
         }
-
-      });
-
-    },
-    {
-      threshold: 0.12
-    }
-  );
+      );
 
 
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
+    revealElements.forEach(element => {
+
+      revealObserver.observe(element);
+
+    });
+
+  } else {
+
+    revealElements.forEach(element => {
+
+      element.classList.add("visible");
+
+    });
+
+  }
 
 
   /* =========================================
      5. BACK TO TOP BUTTON
      ========================================= */
 
-  const backToTop = document.createElement("button");
+  const backToTop =
+    document.createElement("button");
 
   backToTop.className = "back-to-top";
+
+  backToTop.type = "button";
+
   backToTop.innerHTML = "↑";
+
   backToTop.setAttribute(
     "aria-label",
     "Back to top"
   );
-
 
   document.body.appendChild(backToTop);
 
@@ -257,43 +288,58 @@ themeButton.addEventListener("click", function () {
      6. HERO TYPING EFFECT
      ========================================= */
 
-  const eyebrow = document.querySelector(".hero .eyebrow");
+  const eyebrow =
+    document.querySelector(".hero .eyebrow");
 
 
   if (eyebrow) {
 
-    const originalText = eyebrow.textContent.trim();
-
     const words = [
+
       "CSE STUDENT · DEVELOPER · KOLKATA",
+
       "CSE STUDENT · BUILDER · KOLKATA",
+
       "CSE STUDENT · PROGRAMMER · KOLKATA"
+
     ];
 
 
     let wordIndex = 0;
+
     let characterIndex = 0;
+
     let deleting = false;
 
 
     function typeEffect() {
 
-      const currentWord = words[wordIndex];
+      const currentWord =
+        words[wordIndex];
 
 
       if (!deleting) {
 
         eyebrow.textContent =
-          currentWord.substring(0, characterIndex + 1);
+          currentWord.substring(
+            0,
+            characterIndex + 1
+          );
 
         characterIndex++;
 
 
-        if (characterIndex === currentWord.length) {
+        if (
+          characterIndex ===
+          currentWord.length
+        ) {
 
           deleting = true;
 
-          setTimeout(typeEffect, 1800);
+          setTimeout(
+            typeEffect,
+            1800
+          );
 
           return;
 
@@ -302,7 +348,10 @@ themeButton.addEventListener("click", function () {
       } else {
 
         eyebrow.textContent =
-          currentWord.substring(0, characterIndex - 1);
+          currentWord.substring(
+            0,
+            characterIndex - 1
+          );
 
         characterIndex--;
 
@@ -312,7 +361,8 @@ themeButton.addEventListener("click", function () {
           deleting = false;
 
           wordIndex =
-            (wordIndex + 1) % words.length;
+            (wordIndex + 1) %
+            words.length;
 
         }
 
@@ -329,7 +379,10 @@ themeButton.addEventListener("click", function () {
 
     eyebrow.textContent = "";
 
-    setTimeout(typeEffect, 700);
+    setTimeout(
+      typeEffect,
+      700
+    );
 
   }
 
@@ -338,73 +391,105 @@ themeButton.addEventListener("click", function () {
      7. ACTIVE NAVIGATION
      ========================================= */
 
-  const sections = document.querySelectorAll(
-    "section[id]"
-  );
-
-  const navigationLinks = document.querySelectorAll(
-    '.nav-links a[href^="#"]'
-  );
+  const sections =
+    document.querySelectorAll(
+      "section[id]"
+    );
 
 
-  const sectionObserver = new IntersectionObserver(
-    entries => {
+  const navigationLinks =
+    document.querySelectorAll(
+      '.nav-links a[href^="#"]'
+    );
 
-      entries.forEach(entry => {
 
-        if (entry.isIntersecting) {
+  if (
+    "IntersectionObserver" in window
+  ) {
 
-          navigationLinks.forEach(link => {
+    const sectionObserver =
+      new IntersectionObserver(
+        entries => {
 
-            link.classList.remove("active");
+          entries.forEach(entry => {
 
-            if (
-              link.getAttribute("href") ===
-              "#" + entry.target.id
-            ) {
+            if (entry.isIntersecting) {
 
-              link.classList.add("active");
+              navigationLinks.forEach(link => {
+
+                link.classList.remove(
+                  "active"
+                );
+
+
+                if (
+                  link.getAttribute(
+                    "href"
+                  ) ===
+                  "#" + entry.target.id
+                ) {
+
+                  link.classList.add(
+                    "active"
+                  );
+
+                }
+
+              });
 
             }
 
           });
 
+        },
+        {
+          rootMargin:
+            "-35% 0px -55% 0px"
         }
-
-      });
-
-    },
-    {
-      rootMargin: "-35% 0px -55% 0px"
-    }
-  );
+      );
 
 
-  sections.forEach(section => {
-    sectionObserver.observe(section);
-  });
+    sections.forEach(section => {
+
+      sectionObserver.observe(section);
+
+    });
+
+  }
 
 
   /* =========================================
      8. PROJECT CARD INTERACTION
      ========================================= */
 
-  document.querySelectorAll(".project-card").forEach(card => {
+  document
+    .querySelectorAll(".project-card")
+    .forEach(card => {
 
-    card.addEventListener("mouseenter", () => {
+      card.addEventListener(
+        "mouseenter",
+        () => {
 
-      card.classList.add("project-hover");
+          card.classList.add(
+            "project-hover"
+          );
+
+        }
+      );
+
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+
+          card.classList.remove(
+            "project-hover"
+          );
+
+        }
+      );
 
     });
-
-
-    card.addEventListener("mouseleave", () => {
-
-      card.classList.remove("project-hover");
-
-    });
-
-  });
 
 
   /* =========================================
@@ -412,27 +497,34 @@ themeButton.addEventListener("click", function () {
      ========================================= */
 
   const footerParagraphs =
-    document.querySelectorAll("footer p");
+    document.querySelectorAll(
+      "footer p"
+    );
 
 
-  footerParagraphs.forEach(paragraph => {
+  footerParagraphs.forEach(
+    paragraph => {
 
-    if (
-      paragraph.textContent.includes("©")
-    ) {
+      if (
+        paragraph.textContent.includes("©")
+      ) {
 
-      paragraph.textContent =
-        `© ${new Date().getFullYear()} Armaan Sayyed`;
+        paragraph.textContent =
+          `© ${new Date().getFullYear()} Armaan Sayyed`;
+
+      }
 
     }
-
-  });
+  );
 
 
   /* =========================================
      10. PAGE LOADED
      ========================================= */
 
-  document.body.classList.add("js-loaded");
+  document.body.classList.add(
+    "js-loaded"
+  );
+
 
 });
