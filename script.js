@@ -99,65 +99,78 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================
-     3. LIGHT / DARK MODE
-     ========================================= */
+  /* /* =========================================
+   3. LIGHT / DARK MODE
+   ========================================= */
 
-  const themeButton = document.createElement("button");
+const themeButton = document.createElement("button");
 
-  themeButton.className = "theme-toggle";
-  themeButton.setAttribute(
-    "aria-label",
-    "Toggle light and dark mode"
+themeButton.className = "theme-toggle";
+themeButton.type = "button";
+
+themeButton.setAttribute(
+  "aria-label",
+  "Toggle light and dark mode"
+);
+
+const savedTheme = localStorage.getItem("portfolio-theme");
+
+if (savedTheme === "light") {
+  document.body.classList.add("light-mode");
+}
+
+
+/* Update the button icon */
+
+function updateThemeIcon() {
+
+  if (document.body.classList.contains("light-mode")) {
+
+    themeButton.textContent = "☀";
+
+  } else {
+
+    themeButton.textContent = "☾";
+
+  }
+
+}
+
+
+updateThemeIcon();
+
+
+/* Put button inside navigation */
+
+const navContainer = document.querySelector(".nav-container");
+
+if (navContainer) {
+
+  navContainer.appendChild(themeButton);
+
+}
+
+
+/* Toggle theme */
+
+themeButton.addEventListener("click", function () {
+
+  document.body.classList.toggle("light-mode");
+
+
+  const lightMode =
+    document.body.classList.contains("light-mode");
+
+
+  localStorage.setItem(
+    "portfolio-theme",
+    lightMode ? "light" : "dark"
   );
-
-
-  const savedTheme = localStorage.getItem("portfolio-theme");
-
-
-  if (savedTheme === "light") {
-    document.body.classList.add("light-mode");
-  }
-
-
-  function updateThemeIcon() {
-
-    const isLight =
-      document.body.classList.contains("light-mode");
-
-    themeButton.textContent = isLight ? "☀" : "☾";
-
-  }
 
 
   updateThemeIcon();
 
-
-  const nav = document.querySelector(".nav-container");
-
-  if (nav) {
-    nav.appendChild(themeButton);
-  }
-
-
-  themeButton.addEventListener("click", () => {
-
-    document.body.classList.toggle("light-mode");
-
-    const isLight =
-      document.body.classList.contains("light-mode");
-
-    localStorage.setItem(
-      "portfolio-theme",
-      isLight ? "light" : "dark"
-    );
-
-    updateThemeIcon();
-
-  });
-
-
-  /* =========================================
+}); =========================================
      4. SCROLL REVEAL ANIMATIONS
      ========================================= */
 
