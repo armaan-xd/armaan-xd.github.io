@@ -1350,3 +1350,380 @@ footer {
   }
 
 }
+
+
+/* =========================================================
+   JAVASCRIPT FEATURES
+========================================================= */
+
+
+/* =========================
+   THEME TOGGLE
+========================= */
+
+.theme-toggle {
+
+  width: 38px;
+  height: 38px;
+
+  margin-left: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+
+  background: var(--surface);
+
+  color: var(--gold);
+
+  font-family: 'JetBrains Mono', monospace;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.theme-toggle:hover {
+
+  border-color: var(--gold);
+
+  transform: translateY(-2px);
+
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+
+  --bg: #f5f3ed;
+  --surface: #ffffff;
+  --surface-light: #eeece5;
+
+  --border: #d8d4c8;
+
+  --text: #171717;
+  --muted: #666666;
+
+  --gold: #9a7610;
+  --gold-light: #b28b18;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+
+body.light-mode .navbar {
+
+  background: rgba(245, 243, 237, 0.9);
+
+  border-bottom-color: var(--border);
+}
+
+
+body.light-mode .hero-background {
+
+  background: radial-gradient(
+    circle,
+    rgba(154, 118, 16, 0.10),
+    transparent 65%
+  );
+}
+
+
+body.light-mode .about-photo img {
+
+  background: #ffffff;
+}
+
+
+body.light-mode .email-button:hover {
+
+  color: #ffffff;
+
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.mobile-menu-button {
+
+  display: none;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 8px;
+
+  margin-left: auto;
+
+  border: 1px solid var(--border);
+
+  background: var(--surface);
+
+  cursor: pointer;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 4px;
+
+}
+
+
+.mobile-menu-button span {
+
+  display: block;
+
+  width: 17px;
+  height: 1px;
+
+  background: var(--text);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+/* =========================
+   ACTIVE NAVIGATION
+========================= */
+
+.nav-links a.active {
+
+  color: var(--gold);
+
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+
+.reveal.visible {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+/* =========================
+   PROJECT INTERACTION
+========================= */
+
+.project-card.project-hover {
+
+  border-color: var(--gold);
+
+  transform: translateY(-5px);
+
+}
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+.back-to-top {
+
+  position: fixed;
+
+  right: 24px;
+  bottom: 24px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--gold);
+
+  background: var(--surface);
+
+  color: var(--gold);
+
+  font-family: 'JetBrains Mono', monospace;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+
+  z-index: 90;
+
+}
+
+
+.back-to-top.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+
+}
+
+
+.back-to-top:hover {
+
+  background: var(--gold);
+
+  color: #090909;
+
+}
+
+
+/* =========================================================
+   MOBILE JAVASCRIPT STYLES
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+  /* ---------- NAV ---------- */
+
+  .nav-container {
+
+    position: relative;
+
+  }
+
+
+  .theme-toggle {
+
+    width: 34px;
+    height: 34px;
+
+    margin-left: 8px;
+
+    margin-right: 48px;
+
+    font-size: 0.9rem;
+
+  }
+
+
+  .mobile-menu-button {
+
+    display: flex;
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+  }
+
+
+  .nav-links.mobile-open {
+
+    display: flex;
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 100%;
+
+    padding: 18px 20px 22px;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    background: var(--bg);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+
+  }
+
+
+  .nav-links.mobile-open a {
+
+    font-size: 0.7rem;
+
+  }
+
+
+  /* ---------- BACK TO TOP ---------- */
+
+  .back-to-top {
+
+    right: 18px;
+
+    bottom: 18px;
+
+    width: 38px;
+
+    height: 38px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .theme-toggle {
+
+    margin-right: 44px;
+
+  }
+
+}
