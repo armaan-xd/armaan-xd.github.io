@@ -749,9 +749,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </strong>
         </div>
 
-        <div class="dev-command">
-          &gt; system ready_
-        </div>
+       <div class="dev-command">
+  &gt; system ready<span class="terminal-cursor">_</span>
+</div>
 
       </div>
 
