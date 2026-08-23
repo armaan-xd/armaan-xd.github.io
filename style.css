@@ -1727,3 +1727,262 @@ body.light-mode .email-button:hover {
   }
 
 }
+
+/* =========================================================
+   TIME-BASED GREETING
+========================================================= */
+
+.greeting {
+
+  margin-bottom: 8px;
+
+  color: var(--gold-light);
+
+}
+
+
+/* =========================================================
+   SECRET DEVELOPER MODE
+========================================================= */
+
+.dev-panel {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.78);
+
+  backdrop-filter: blur(10px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+
+}
+
+
+.dev-panel.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+
+.dev-window {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 430px;
+
+  padding: 30px;
+
+  background: #0b0b0b;
+
+  border: 1px solid var(--gold);
+
+  box-shadow:
+    0 0 45px rgba(212, 175, 55, 0.15);
+
+  font-family: 'JetBrains Mono', monospace;
+
+  color: var(--text);
+
+  transform: translateY(15px);
+
+  transition:
+    transform 0.25s ease;
+
+}
+
+
+.dev-panel.show .dev-window {
+
+  transform: translateY(0);
+
+}
+
+
+.dev-title {
+
+  color: var(--gold);
+
+  font-size: 0.8rem;
+
+  letter-spacing: 0.12em;
+
+}
+
+
+.dev-line {
+
+  margin: 12px 0 22px;
+
+  color: var(--border);
+
+  overflow: hidden;
+
+}
+
+
+.dev-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 8px 0;
+
+  font-size: 0.72rem;
+
+  border-bottom: 1px solid rgba(40, 40, 40, 0.45);
+
+}
+
+
+.dev-row span {
+
+  color: var(--muted);
+
+}
+
+
+.dev-row strong {
+
+  color: var(--text);
+
+  font-weight: 400;
+
+  text-align: right;
+
+}
+
+
+.dev-row .online {
+
+  color: #65c466;
+
+}
+
+
+.dev-command {
+
+  margin-top: 25px;
+
+  color: var(--gold);
+
+  font-size: 0.72rem;
+
+}
+
+
+.dev-close {
+
+  position: absolute;
+
+  top: 12px;
+
+  right: 14px;
+
+  width: 30px;
+
+  height: 30px;
+
+  border: 1px solid var(--border);
+
+  background: transparent;
+
+  color: var(--muted);
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+}
+
+
+.dev-close:hover {
+
+  color: var(--gold);
+
+  border-color: var(--gold);
+
+}
+
+
+/* =========================================================
+   DEVELOPER MODE — LIGHT MODE
+========================================================= */
+
+body.light-mode .dev-panel {
+
+  background: rgba(245, 243, 237, 0.78);
+
+}
+
+
+body.light-mode .dev-window {
+
+  background: #ffffff;
+
+}
+
+
+/* =========================================================
+   DEVELOPER MODE — PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .dev-panel {
+
+    padding: 18px;
+
+  }
+
+
+  .dev-window {
+
+    padding: 25px 20px;
+
+  }
+
+
+  .dev-row {
+
+    font-size: 0.65rem;
+
+  }
+
+
+  .dev-command {
+
+    font-size: 0.65rem;
+
+  }
+
+}
