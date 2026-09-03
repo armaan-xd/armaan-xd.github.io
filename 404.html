@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Page Not Found | Armaan Sayyed</title>
+  <meta name="description" content="This page doesn't exist. Find your way back to Armaan Sayyed's portfolio.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://armaan-xd.github.io/404.html">
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#090909">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .error-page {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 100px 24px;
+    }
+    .error-page .eyebrow {
+      margin: 0 0 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+    }
+    .error-page h1 {
+      margin: 0;
+      font-size: clamp(4rem, 10vw, 7.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      font-weight: 700;
+    }
+    .error-page h1 span { color: var(--gold); }
+    .error-page p {
+      max-width: 520px;
+      margin: 30px 0 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+    .error-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 40px;
+    }
+    .error-links a {
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .error-links a:hover { border-color: var(--gold); color: var(--gold); }
+    .error-links a.primary { border-color: var(--gold); color: var(--gold); }
+    @media (max-width: 600px) {
+      .error-page { padding: 85px 20px 75px; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo">AS.</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="error-page">
+      <div>
+        <p class="eyebrow">404 · PAGE NOT FOUND</p>
+        <h1>Nothing <span>here.</span></h1>
+        <p>
+          The page you're looking for doesn't exist or may have moved.
+          Head back to the homepage, or jump straight to a section below.
+        </p>
+        <div class="error-links">
+          <a href="/" class="primary">Home</a>
+          <a href="/#about">About</a>
+          <a href="/#skills">Skills</a>
+          <a href="/#projects">Projects</a>
+          <a href="/#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Armaan Sayyed</p>
+    <p>Built with HTML & CSS.</p>
+  </footer>
+
+</body>
+</html>

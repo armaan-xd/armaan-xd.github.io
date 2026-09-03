@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://armaan-xd.github.io/sitemap.xml

@@ -1,0 +1,18 @@
+# Armaan Sayyed
+
+> Personal portfolio of Armaan Sayyed, a Computer Science & Engineering student at Brainware University in Kolkata, India. Covers background, technical skills, and projects.
+
+## Page
+
+- [Home](https://armaan-xd.github.io/): One-page portfolio — about, skills, projects, education, and contact, all in a single scroll.
+
+## Projects
+
+- [Personal Portfolio](https://github.com/armaan-xd): This site, built with HTML and CSS, deployed on GitHub Pages.
+- [EVM with Vote Counting](https://armaan-xd.github.io/MyEVM/): Interactive Electronic Voting Machine with candidate selection, vote counting, and live results.
+
+## Contact
+
+- Email: armansayyedff@gmail.com
+- GitHub: https://github.com/armaan-xd
+- LinkedIn: https://www.linkedin.com/in/arman-sayyed-395670391/
